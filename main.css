@@ -60,3 +60,15 @@ button {
 #ans-1, #ans-2, #ans-3, #ans-4 {
     margin-top: 20px;
 }
+
+.hidden > * {
+    display: none;
+}
+
+.end-quiz {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    color: white;
+    text-align: center;
+}
