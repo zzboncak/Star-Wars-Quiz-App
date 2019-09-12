@@ -1,0 +1,42 @@
+<!Doctype html>
+<html lang = "en">
+    
+    <head>
+        <meta charset="utf-8" />
+        <meta name="description" type="A quiz on Star Wars to see how much you really know">
+        <meta name="viewport" content="widt=device-width">
+        <title>The Difinitive Star Wars Quiz</title>
+        <link rel="stylesheet" type="text/css" href="main.css" />
+    </head>
+
+    <body>
+        <main role="main" class="main">
+            <header role="header" class="header">
+                <h1 class="title">Star Wars Quiz</h1>
+            </header>
+
+            <section role="progressbar" class="progress">
+                <div class="top top-left">Question: <span class = "js-question-status">0</span>/10</div>
+                <div class="top top-right">Score: <span class = "js-score-status">0</span>/10</div>
+            </section>
+
+            <form class="quiz-form js-quiz">
+                <fieldset class="question">
+                    <legend class="question-text"></legend>
+                    <input type="radio" name="answer" id="ans-1" value="1">
+                    <label for="ans-1"></label>
+                    <br>
+                    <input type="radio" name="answer" id="ans-2" value="2">
+                    <label for="ans-2"></label>
+                    <br>
+                    <input type="radio" name="answer" id="ans-3" value="3">
+                    <label for="ans-3"></label>
+                    <br>
+                    <input type="radio" name="answer" id="ans-4" value="4">
+                    <label for="ans-4"></label>
+                </fieldset>
+                <button type="submit">Is the force with you??</button>
+            </form>
+        </main>
+    </body>
+</html>
