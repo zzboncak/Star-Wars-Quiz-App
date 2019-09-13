@@ -20,28 +20,30 @@
                 <div class="top top-right">Score: <span class = "js-score-status">0</span>/10</div>
             </section>
 
-            <form class="start-form js-start">
+            <form class="start-form js-start hidden">
                 <fieldset class="question">
                     <h2 class="question-text">Are you ready to take the quiz?</h2>
                     <button type="submit">Is Luke Skywalker a whiny punk? (yes)</button>
                 </fieldset>
             </form>
             
-            <form class="quiz-form js-quiz hidden">
+            <form class="quiz-form js-quiz">
                 <fieldset class="question">
-                    <h2 class="question-text">1. How many Star Wars movies are there in the Skywalker Saga?</h2>
-                    <input type="radio" name="answer" id="ans-1" value="1">
-                    <label for="ans-1">6</label>
-                    <br>
-                    <input type="radio" name="answer" id="ans-2" value="2">
-                    <label for="ans-2">3</label>
-                    <br>
-                    <input type="radio" name="answer" id="ans-3" value="3">
-                    <label for="ans-3">8</label>
-                    <br>
-                    <input type="radio" name="answer" id="ans-4" value="4">
-                    <label for="ans-4">9</label>
-                    <br>
+                    <h2 class="question-text">1. Did this change?</h2>
+                    <div class = "answer-set">
+                        <input type="radio" name="answer" id="ans-1" value="1">
+                        <label for="ans-1">6</label>
+                        <br>
+                        <input type="radio" name="answer" id="ans-2" value="2">
+                        <label for="ans-2">3</label>
+                        <br>
+                        <input type="radio" name="answer" id="ans-3" value="3">
+                        <label for="ans-3">8</label>
+                        <br>
+                        <input type="radio" name="answer" id="ans-4" value="4">
+                        <label for="ans-4">9</label>
+                        <br>
+                    </div>
                     <button type="submit">Is the force<br>with you?</button>
                 </fieldset>
             </form>
@@ -51,5 +53,7 @@
                 <div class="end-score"><span class="end-score"></span>/10</div>
             </section>
         </main>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="index.js"></script>
     </body>
 </html>
