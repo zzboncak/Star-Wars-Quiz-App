@@ -9,13 +9,71 @@ const master = [
         "Princess Leia’s Husband", 
         "Luke Skywalker’s Uncle", 
         "A bounty hunter in Episode IV"],
+    },
+    {
+        question: "!! Spoiler Alert !! Who is Luke Skywalker’s Father?",
+        answers: ["Anakin Skywalker", 
+        "Obi-Wan Kenobi", 
+        "Qui-Gon Jin", 
+        "Mace Windu"],
+    },
+    {
+        qusetion: "How long is Episode I (no Googling -- God is watching)",
+        answers: ["136 minutes",
+        "117 minutes",
+        "124 minutes",
+        "156 minutes"],
+    },
+    {
+        question: "What is unique about Count Duku’s lightsaber?",
+        answers: ["It is bent at the hilt",
+        "It has two blades",
+        "It's Purple",
+        "It used to be Dath Plageus the Wise's"],
+    },
+    {
+        question: "What species is Jar Jar Binks?",
+        answers: ["Gungan",
+        "Mandalorian",
+        "Wookie",
+        "Geonosian"],
+    },
+    {
+        question: "What is Finn’s original storm trooper call number?",
+        answers: ["FN-2187",
+        "FIN-3552",
+        "FN-4259",
+        "FN-3423"],
+    },
+    {
+        question: "Where does Rey find Luke Skywalker’s lightsaber?",
+        answers: ["In Maz Kanata’s pub",
+        "On a remote island",
+        "Obi-Wan gave it to her",
+        "In an ancient tree"],
+    },
+    {
+        question: "Which movie was made 5th?",
+        answers: ["Episode II",
+        "Episode I",
+        "Episode V",
+        "Episode VII"],
+    },
+    {
+        question: "How much money did George Lucas sell Lucasfilm for?",
+        answers: ["$4.05 Billion",
+        "$3.05 Billion",
+        "$987 Million",
+        "$405 Million"],
     }
 ];
 
+//setting initial global variables of score and the current question the user is on as 0 as starting points.
+//Then as the user progresses through the quiz, these variables will be updated.
 let score = 0;
-
 let questionNumber = 0;
 
+//this function renders the current question to the screen
 function renderQuestion () {
     let currentQuestion = master[questionNumber];
     let questionText = currentQuestion.question;
