@@ -1,7 +1,9 @@
+//My questions and possible answers. The first entry into each answers array is the correct answer.
 const master = [
     {
         question: "How many Star Wars movies are there in the Skywalker Saga?",
         answers: ["9", "3", "8", "6"],
+        feedback: "Once Episode IX comes out in December 2019, there will be 6 films in the Skywalker Saga.",
     },
     {
         question: "Who is Lando Calrisian?",
@@ -9,13 +11,15 @@ const master = [
         "Princess Leia’s Husband", 
         "Luke Skywalker’s Uncle", 
         "A bounty hunter in Episode IV"],
+        feedback: "Land and Han Solo go way back. Leia isn't married, and Luke's uncle is Owen.",
     },
     {
         question: "!! Spoiler Alert !! Who is Luke Skywalker’s Father?",
-        answers: ["Anakin Skywalker", 
+        answers: ["Darth Vader", 
         "Obi-Wan Kenobi", 
         "Qui-Gon Jin", 
         "Mace Windu"],
+        feedback: "If you didn't get this one, please watch all of Episode V in its entirety. And ask any person on the street.",
     },
     {
         qusetion: "How long is Episode I (no Googling -- God is watching)",
