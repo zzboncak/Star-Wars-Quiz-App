@@ -27,6 +27,7 @@ const master = [
         "117 minutes",
         "124 minutes",
         "156 minutes"],
+        feedback: "Okay, this one was mean. it's 136 minutes long.",
     },
     {
         question: "What is unique about Count Duku’s lightsaber?",
@@ -34,6 +35,7 @@ const master = [
         "It has two blades",
         "It's Purple",
         "It used to be Dath Plageus the Wise's"],
+        feedback: "Count Duku's lightsaber is bent at the hilt.",
     },
     {
         question: "What species is Jar Jar Binks?",
@@ -41,6 +43,7 @@ const master = [
         "Mandalorian",
         "Wookie",
         "Geonosian"],
+        feedback: "Jar Jar, a gungan, is arguably the Star Wars fandom's least favorite character.",
     },
     {
         question: "What is Finn’s original storm trooper call number?",
@@ -48,6 +51,7 @@ const master = [
         "FIN-3552",
         "FN-4259",
         "FN-3423"],
+        feedback: "Phasma says... 'FN-2187, submit your blaster for inspection.'",
     },
     {
         question: "Where does Rey find Luke Skywalker’s lightsaber?",
@@ -55,6 +59,7 @@ const master = [
         "On a remote island",
         "Obi-Wan gave it to her",
         "In an ancient tree"],
+        feedback: "Rey finds Luke's lightsaber in Maz Kanata's pub."
     },
     {
         question: "Which movie was made 5th?",
@@ -62,6 +67,7 @@ const master = [
         "Episode I",
         "Episode V",
         "Episode VII"],
+        feedback: "In release order: IV, V, VI, I, !!II!!, III, VII, VIII, IX",
     },
     {
         question: "How much money did George Lucas sell Lucasfilm for?",
@@ -69,6 +75,7 @@ const master = [
         "$3.05 Billion",
         "$987 Million",
         "$405 Million"],
+        feedback: "$4.05 billion is a lot of money...",
     }
 ];
 
