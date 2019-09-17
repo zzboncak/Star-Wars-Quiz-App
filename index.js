@@ -83,23 +83,43 @@ const master = [
 //Then as the user progresses through the quiz, these variables will be updated.
 let score = 0;
 let questionNumber = 0;
+let randomArray = [];
+let correctAnswer;
 
 //this function renders the current question to the screen
 function renderQuestion () {
     let currentQuestion = master[questionNumber];
     let questionText = currentQuestion.question;
-    let correctAnswer = currentQuestion.answers[0];
-    let randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
+    correctAnswer = currentQuestion.answers[0];
+    randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
     $(".question-text").text(questionText);
     $('.answer-set').empty();
     let answerString = "";
     for (let i in randomArray) {
         let answer = randomArray[i];
-        answerString += `<input type="radio" name="answer" id="ans-1" value="1">
-        <label for="ans-1">${answer}</label>
+        answerString += `<input type="radio" name="answer" id="ans-${i}" value="${i}">
+        <label for="ans-${i}">${answer}</label>
         <br>`
     }
     $('.answer-set').html(answerString);
 }
+
+//this function will evaluate if the answer selected is correct
+function evaluateQuestion () {
+    event.preventDefault();
+    let currentQuestion = master[questionNumber];
+    let correctIndex = randomArray.indexOf(correctAnswer);
+    let radioValue = $("input[name='answer']:checked").val();
+    //only == because radioValue is a string and correctIndex is a number.
+    if (radioValue == correctIndex) {
+        score += 1
+        console.log('You got it right!');
+    }
+    else {
+        console.log('You did not get that question right');
+    }
+}
+
+$('.quiz-form').submit(evaluateQuestion);
 
 renderQuestion();
