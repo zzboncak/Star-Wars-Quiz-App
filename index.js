@@ -119,7 +119,25 @@ function renderCurrentQuestion() {
 
 function evaluateAnswer() {
     //this function evaluates if the user's answer is the correct answer
-    console.log(`evaluateAnswer ran!`);
+    $('.js-quiz').submit(event => {
+        event.preventDefault();
+        let correctIndex = randomArray.indexOf(correctAnswer);
+        let radioValue = $("input[name='answer']:checked").val(); 
+        if (correctIndex == radioValue) {
+            score += 1;
+            questionNumber += 1;
+            renderScoreAndProgress();
+            renderFeedback();
+            console.log(`correct answer selected!`);
+        } else {
+            questionNumber += 1;
+            renderScoreAndProgress();
+            renderFeedback();
+            console.log(`wrong answer selected!`)
+        }
+        console.log(`evaluateAnswer ran!`);
+    })
+    
 }
 
 function renderFeedback() {
@@ -130,6 +148,8 @@ function renderFeedback() {
 function renderScoreAndProgress() {
     //this function renders the user's current score and progress to the screen
     //later I may break this into two functions
+    $('.js-score-status').text(score);
+    $('.js-question-status').text(questionNumber);
     console.log(`renderScoreAndProgress ran!`);
 }
 
