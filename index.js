@@ -91,6 +91,7 @@ function initiateQuiz() {
     $('.js-start').submit(event => {
         event.preventDefault();
         console.log(`initiateQuiz ran!`);
+        renderCurrentQuestion();
         //this is not really needed as a function.
         //I can just place the event listener outside of any function
         //The HTML links the user to the form page
