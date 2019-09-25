@@ -22,7 +22,7 @@ const master = [
         feedback: "If you didn't get this one, please watch all of Episode V in its entirety. And ask any person on the street.",
     },
     {
-        qusetion: "How long is Episode I (no Googling -- God is watching)",
+        question: "How long is Episode I (no Googling -- God is watching)",
         answers: ["136 minutes",
         "117 minutes",
         "124 minutes",
