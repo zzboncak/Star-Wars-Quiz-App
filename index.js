@@ -100,6 +100,8 @@ function initiateQuiz() {
 
 function renderCurrentQuestion() {
     //this function renders the user's current question to the screen
+    $('.js-quiz').removeClass('hidden');
+    $('.js-feedback').addClass('hidden');
     let currentQuestion = master[questionNumber];
     correctAnswer = currentQuestion.answers[0];
     $('.question-text').text(currentQuestion.question);
@@ -127,12 +129,12 @@ function evaluateAnswer() {
             score += 1;
             questionNumber += 1;
             renderScoreAndProgress();
-            renderFeedback();
+            renderPositiveFeedback();
             console.log(`correct answer selected!`);
         } else {
             questionNumber += 1;
             renderScoreAndProgress();
-            renderFeedback();
+            renderNegativeFeedback();
             console.log(`wrong answer selected!`)
         }
         console.log(`evaluateAnswer ran!`);
@@ -140,8 +142,19 @@ function evaluateAnswer() {
     
 }
 
-function renderFeedback() {
-    //this function renders the feedback to the user upon submitting an answer
+function renderPositiveFeedback() {
+    //this function renders the positive feedback to the user upon submitting an answer
+    $('.js-quiz').toggleClass('hidden');
+    $('.js-feedback').toggleClass('hidden');
+    $('.feedback-text').text("You are both wise and strong with the force.");
+    console.log(`renderFeedback ran!`);
+}
+
+function renderNegativeFeedback() {
+    //this function renders the negative feedback to the user upon submitting an answer
+    $('.js-quiz').toggleClass('hidden');
+    $('.js-feedback').toggleClass('hidden');
+    $('.feedback-text').text("Much to learn you still have.");
     console.log(`renderFeedback ran!`);
 }
 
@@ -149,16 +162,24 @@ function renderScoreAndProgress() {
     //this function renders the user's current score and progress to the screen
     //later I may break this into two functions
     $('.js-score-status').text(score);
-    $('.js-question-status').text(questionNumber);
+    $('.js-question-status').text(questionNumber + 1);
     console.log(`renderScoreAndProgress ran!`);
 }
+
+function advanceQuestion() {
+    $('.js-feedback').submit(event => {
+        event.preventDefault();
+        renderCurrentQuestion();
+    });
+}
+
 
 function handleQuizApp() {
     initiateQuiz();
     renderCurrentQuestion();
     evaluateAnswer();
-    renderFeedback();
     renderScoreAndProgress();
+    advanceQuestion()
 }
 
 $(handleQuizApp);
