@@ -88,11 +88,22 @@ let correctAnswer;
 
 function initiateQuiz() {
     //this function initiates the quiz from the landing page
-    console.log(`initiateQuiz ran!`);
+    $('.js-start').submit(event => {
+        event.preventDefault();
+        console.log(`initiateQuiz ran!`);
+        //this is not really needed as a function.
+        //I can just place the event listener outside of any function
+        //The HTML links the user to the form page
+    })
 }
 
 function renderCurrentQuestion() {
     //this function renders the user's current question to the screen
+    let currentQuestion = master[questionNumber];
+    correctAnswer = currentQuestion.answers[0];
+    
+    $('.question-text').text(currentQuestion.question);
+
     console.log(`renderQuestion ran!`);
 }
 
