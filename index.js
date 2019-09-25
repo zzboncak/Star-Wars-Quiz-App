@@ -98,25 +98,42 @@ function initiateQuiz() {
     })
 }
 
+function renderQuizEnd() {
+    $('.js-quiz').addClass('hidden');
+    $('.js-feedback').addClass('hidden');
+    $('.progress').addClass('hidden');
+    $('.end-quiz').toggleClass('hidden');
+    $('.end-score').text(score);
+}
+
 function renderCurrentQuestion() {
     //this function renders the user's current question to the screen
+    
+    //these ensure the question form is displayed and the feedback portion is hidden
     $('.js-quiz').removeClass('hidden');
     $('.js-feedback').addClass('hidden');
-    let currentQuestion = master[questionNumber];
-    correctAnswer = currentQuestion.answers[0];
-    $('.question-text').text(currentQuestion.question);
-    randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
-    $('.answer-set').empty();
-    let answerString = "";
-    for (let i in randomArray) {
-        let answer = randomArray[i];
-        answerString += `<input type="radio" name="answer" id="ans-${i}" value="${i}">
-        <label for="ans-${i}">${answer}</label>
-        <br>`
+    $('.progress').removeClass('hidden');
+
+    if (questionNumber === 10) {
+        renderQuizEnd();
+    } else {
+        let currentQuestion = master[questionNumber];
+        correctAnswer = currentQuestion.answers[0];
+        $('.question-text').text(currentQuestion.question);
+        randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
+        $('.answer-set').empty();
+        let answerString = "";
+        for (let i in randomArray) {
+            let answer = randomArray[i];
+            answerString += `<input type="radio" name="answer" id="ans-${i}" value="${i}">
+            <label for="ans-${i}">${answer}</label>
+            <br>`
+        }
+        $('.answer-set').html(answerString);
+        console.log(`renderQuestion ran!`);
+        console.log(correctAnswer);
     }
-    $('.answer-set').html(answerString);
-    console.log(`renderQuestion ran!`);
-    console.log(correctAnswer);
+    
 }
 
 function evaluateAnswer() {
@@ -146,6 +163,7 @@ function renderPositiveFeedback() {
     //this function renders the positive feedback to the user upon submitting an answer
     $('.js-quiz').toggleClass('hidden');
     $('.js-feedback').toggleClass('hidden');
+    $('.progress').toggleClass('hidden');
     $('.feedback-text').text("You are both wise and strong with the force.");
     console.log(`renderFeedback ran!`);
 }
@@ -154,6 +172,7 @@ function renderNegativeFeedback() {
     //this function renders the negative feedback to the user upon submitting an answer
     $('.js-quiz').toggleClass('hidden');
     $('.js-feedback').toggleClass('hidden');
+    $('.progress').toggleClass('hidden');
     $('.feedback-text').text("Much to learn you still have.");
     console.log(`renderFeedback ran!`);
 }
