@@ -86,3 +86,38 @@ let questionNumber = 0;
 let randomArray = [];
 let correctAnswer;
 
+function initiateQuiz() {
+    //this function initiates the quiz from the landing page
+    console.log(`initiateQuiz ran!`);
+}
+
+function renderCurrentQuestion() {
+    //this function renders the user's current question to the screen
+    console.log(`renderQuestion ran!`);
+}
+
+function evaluateAnswer() {
+    //this function evaluates if the user's answer is the correct answer
+    console.log(`evaluateAnswer ran!`);
+}
+
+function renderFeedback() {
+    //this function renders the feedback to the user upon submitting an answer
+    console.log(`renderFeedback ran!`);
+}
+
+function renderScoreAndProgress() {
+    //this function renders the user's current score and progress to the screen
+    //later I may break this into two functions
+    console.log(`renderScoreAndProgress ran!`);
+}
+
+function handleQuizApp() {
+    initiateQuiz();
+    renderCurrentQuestion();
+    evaluateAnswer();
+    renderFeedback();
+    renderScoreAndProgress();
+}
+
+$(handleQuizApp);
