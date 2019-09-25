@@ -101,10 +101,19 @@ function renderCurrentQuestion() {
     //this function renders the user's current question to the screen
     let currentQuestion = master[questionNumber];
     correctAnswer = currentQuestion.answers[0];
-    
     $('.question-text').text(currentQuestion.question);
-
+    randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
+    $('.answer-set').empty();
+    let answerString = "";
+    for (let i in randomArray) {
+        let answer = randomArray[i];
+        answerString += `<input type="radio" name="answer" id="ans-${i}" value="${i}">
+        <label for="ans-${i}">${answer}</label>
+        <br>`
+    }
+    $('.answer-set').html(answerString);
     console.log(`renderQuestion ran!`);
+    console.log(correctAnswer);
 }
 
 function evaluateAnswer() {
