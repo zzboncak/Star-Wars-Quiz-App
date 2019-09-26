@@ -225,4 +225,7 @@ function handleQuizApp() {
     restartQuiz();
 }
 
+//on page load have the start button in focus so the user can just hit enter if they want
+document.getElementById('start-button').focus();
+
 $(handleQuizApp);
