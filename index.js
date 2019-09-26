@@ -3,7 +3,7 @@ const master = [
     {
         question: "How many Star Wars movies are there in the Skywalker Saga?",
         answers: ["9", "3", "8", "6"],
-        feedback: "Once Episode IX comes out in December 2019, there will be 6 films in the Skywalker Saga.",
+        feedback: "Once Episode IX comes out in December 2019, there will be 9 films in the Skywalker Saga.",
     },
     {
         question: "Who is Lando Calrisian?",
@@ -85,6 +85,7 @@ let score = 0;
 let questionNumber = 0;
 let randomArray = [];
 let correctAnswer;
+let feedback;
 
 function initiateQuiz() {
     //this function initiates the quiz from the landing page
@@ -119,6 +120,7 @@ function renderCurrentQuestion() {
     } else {
         let currentQuestion = master[questionNumber];
         correctAnswer = currentQuestion.answers[0];
+        feedback = currentQuestion.feedback;
         $('.question-text').text(currentQuestion.question);
         randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
         $('.answer-set').empty();
@@ -165,6 +167,7 @@ function renderPositiveFeedback() {
     $('.js-feedback').toggleClass('hidden');
     $('.progress').toggleClass('hidden');
     $('.feedback-text').text("You are both wise and strong with the force.");
+    $('#question-feedback').text(feedback);
     console.log(`renderFeedback ran!`);
 }
 
@@ -174,6 +177,7 @@ function renderNegativeFeedback() {
     $('.js-feedback').toggleClass('hidden');
     $('.progress').toggleClass('hidden');
     $('.feedback-text').text("Much to learn you still have.");
+    $('#question-feedback').text(feedback);
     console.log(`renderFeedback ran!`);
 }
 
