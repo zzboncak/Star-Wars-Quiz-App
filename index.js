@@ -3,6 +3,7 @@ const master = [
     {
         question: "How many Star Wars movies are there in the Skywalker Saga?",
         answers: ["9", "3", "8", "6"],
+        correct: "9",
         feedback: "Once Episode IX comes out in December 2019, there will be 9 films in the Skywalker Saga.",
     },
     {
@@ -11,6 +12,7 @@ const master = [
         "Princess Leia’s Husband", 
         "Luke Skywalker’s Uncle", 
         "A bounty hunter in Episode IV"],
+        correct: "Old Friend of Han Solo’s",
         feedback: "Lando and Han Solo go way back. Leia isn't married, and Luke's uncle is Owen.",
     },
     {
@@ -19,6 +21,7 @@ const master = [
         "Obi-Wan Kenobi", 
         "Qui-Gon Jin", 
         "Mace Windu"],
+        correct: "Darth Vader",
         feedback: "If you didn't get this one, please watch all of Episode V in its entirety. And ask any person on the street.",
     },
     {
@@ -27,6 +30,7 @@ const master = [
         "117 minutes",
         "124 minutes",
         "156 minutes"],
+        correct: "136 minutes",
         feedback: "Okay, this one was mean. It's 136 minutes long.",
     },
     {
@@ -35,6 +39,7 @@ const master = [
         "It has two blades",
         "It's Purple",
         "It used to be Dath Plageus the Wise's"],
+        correct: "It is bent at the hilt",
         feedback: "Count Duku's lightsaber is bent at the hilt.",
     },
     {
@@ -43,6 +48,7 @@ const master = [
         "Mandalorian",
         "Wookie",
         "Geonosian"],
+        correct: "Gungan",
         feedback: "Jar Jar, a gungan, is arguably the Star Wars fandom's least favorite character.",
     },
     {
@@ -51,6 +57,7 @@ const master = [
         "FIN-3552",
         "FN-4259",
         "FN-3423"],
+        correct: "FN-2187",
         feedback: "Phasma says... 'FN-2187, submit your blaster for inspection.'",
     },
     {
@@ -59,6 +66,7 @@ const master = [
         "On a remote island",
         "Obi-Wan gave it to her",
         "In an ancient tree"],
+        correct: "In Maz Kanata’s pub",
         feedback: "Rey finds Luke's lightsaber in Maz Kanata's pub."
     },
     {
@@ -67,6 +75,7 @@ const master = [
         "Episode I",
         "Episode V",
         "Episode VII"],
+        correct: "Episode II",
         feedback: "In release order: IV, V, VI, I, !!II!!, III, VII, VIII, IX",
     },
     {
@@ -75,9 +84,17 @@ const master = [
         "$3.05 Billion",
         "$987 Million",
         "$405 Million"],
+        correct: "$4.05 Billion",
         feedback: "$4.05 billion is a lot of money...",
     }
 ];
+
+const wordsOfWisdom = [
+    "“Much to learn you still have” - Yoda",
+    "“Obi-Wan has taught you well” - Darth Vader",
+    "“I am a Jedi, like my father before me” - Luke Skywalker",
+    "“Impressive… Most, impressive” - Darth Vader"
+]
 
 //setting initial global variables of score and the current question the user is on as 0 as starting points.
 //Then as the user progresses through the quiz, these variables will be updated.
@@ -101,7 +118,17 @@ function renderQuizEnd() {
     $('.js-feedback').addClass('hidden');
     $('.progress').addClass('hidden');
     $('.end-quiz').toggleClass('hidden');
+    document.getElementById('restart-quiz').focus();
     $('.end-score').text(score);
+    if (score <= 3) {
+        $('.final-word-of-wisdom').text(wordsOfWisdom[0]);
+    } else if (score > 3 && score <=6) {
+        $('.final-word-of-wisdom').text(wordsOfWisdom[1]);
+    } else if (score > 6 && score <=9) {
+        $('.final-word-of-wisdom').text(wordsOfWisdom[2]);
+    } else if (score === 10) {
+        $('.final-word-of-wisdom').text(wordsOfWisdom[3]);
+    }
 }
 
 function renderCurrentQuestion() {
@@ -116,7 +143,7 @@ function renderCurrentQuestion() {
         renderQuizEnd();
     } else {
         let currentQuestion = master[questionNumber];
-        correctAnswer = currentQuestion.answers[0];
+        correctAnswer = currentQuestion.correct;
         feedback = currentQuestion.feedback;
         $('.question-text').text(currentQuestion.question);
         randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
@@ -148,12 +175,10 @@ function evaluateAnswer() {
             questionNumber += 1;
             renderScore();
             renderPositiveFeedback();
-            console.log(`correct answer selected!`);
         } else {
             questionNumber += 1;
             renderScore();
             renderNegativeFeedback();
-            console.log(`wrong answer selected!`)
         }
     })
 }
@@ -178,13 +203,11 @@ function renderNegativeFeedback() {
     hideQuizAndDisplayFeedback();
     $('.feedback-text').text("Much to learn you still have.");
     document.getElementById('next-question').focus();
-    console.log(`renderFeedback ran!`);
 }
 
 function renderScore() {
     //this function renders the user's current score to the screen
     $('.js-score-status').text(score);
-    console.log(`renderScore ran!`);
 }
 
 function renderProgress() {
@@ -207,10 +230,10 @@ function restartQuiz() {
         score = 0;
         questionNumber = 0;
         randomArray = [];
-        correctAnswer = undefined;
-        feedback = undefined;
+        //correctAnswer = undefined;
+        //feedback = undefined;
         renderScore();
-        renderProgress();
+        //renderProgress();
         renderCurrentQuestion();
         $('.end-quiz').toggleClass('hidden');
         $('.progress').toggleClass('hidden');
