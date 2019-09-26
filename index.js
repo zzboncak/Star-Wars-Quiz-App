@@ -193,19 +193,36 @@ function renderProgress() {
 }
 
 function advanceQuestion() {
+    //this function handles advancing to the next question
     $('.js-feedback').submit(event => {
         event.preventDefault();
         renderCurrentQuestion();
     });
 }
 
+function restartQuiz() {
+    //this function restarts the quiz
+    $('#restart-quiz').click(event => {
+        //reset globals
+        score = 0;
+        questionNumber = 0;
+        randomArray = [];
+        correctAnswer = undefined;
+        feedback = undefined;
+        renderScore();
+        renderProgress();
+        renderCurrentQuestion();
+        $('.end-quiz').toggleClass('hidden');
+        $('.progress').toggleClass('hidden');
+    })
+}
 
 function handleQuizApp() {
     initiateQuiz();
-    //renderCurrentQuestion();
     evaluateAnswer();
     renderScore();
     advanceQuestion();
+    restartQuiz();
 }
 
 $(handleQuizApp);
