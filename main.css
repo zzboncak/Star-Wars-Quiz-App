@@ -31,7 +31,7 @@ header {
 .top {
     display: inline-block;
     width: 50%;
-    font-size: 12pt;
+    font-size: 14pt;
 }
 
 form {
@@ -44,9 +44,11 @@ form {
 fieldset {
     border-radius: 5px;
     color: white;
+    background: rgba(0,0,0,0.75);
 }
 
-h2 {
+
+.question-text {
     font-size: 15pt;
 }
 
@@ -71,4 +73,12 @@ button {
     width: 400px;
     color: white;
     text-align: center;
+}
+
+.end-score-container {
+    font-size: 20pt;
+}
+
+label, .question-feedback {
+    font-size: 14pt;
 }

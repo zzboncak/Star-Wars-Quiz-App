@@ -11,7 +11,7 @@ const master = [
         "Princess Leia’s Husband", 
         "Luke Skywalker’s Uncle", 
         "A bounty hunter in Episode IV"],
-        feedback: "Land and Han Solo go way back. Leia isn't married, and Luke's uncle is Owen.",
+        feedback: "Lando and Han Solo go way back. Leia isn't married, and Luke's uncle is Owen.",
     },
     {
         question: "!! Spoiler Alert !! Who is Luke Skywalker’s Father?",
@@ -27,7 +27,7 @@ const master = [
         "117 minutes",
         "124 minutes",
         "156 minutes"],
-        feedback: "Okay, this one was mean. it's 136 minutes long.",
+        feedback: "Okay, this one was mean. It's 136 minutes long.",
     },
     {
         question: "What is unique about Count Duku’s lightsaber?",
@@ -91,11 +91,8 @@ function initiateQuiz() {
     //this function initiates the quiz from the landing page
     $('.js-start').submit(event => {
         event.preventDefault();
-        console.log(`initiateQuiz ran!`);
+        $('.js-start').toggleClass('hidden');
         renderCurrentQuestion();
-        //this is not really needed as a function.
-        //I can just place the event listener outside of any function
-        //The HTML links the user to the form page
     })
 }
 
@@ -109,12 +106,12 @@ function renderQuizEnd() {
 
 function renderCurrentQuestion() {
     //this function renders the user's current question to the screen
-    
+
     //these ensure the question form is displayed and the feedback portion is hidden
     $('.js-quiz').removeClass('hidden');
     $('.js-feedback').addClass('hidden');
-    $('.progress').removeClass('hidden');
-
+    //$('.progress').removeClass('hidden');
+    renderProgress();
     if (questionNumber === 10) {
         renderQuizEnd();
     } else {
@@ -132,10 +129,9 @@ function renderCurrentQuestion() {
             <br>`
         }
         $('.answer-set').html(answerString);
-        console.log(`renderQuestion ran!`);
-        console.log(correctAnswer);
+        document.getElementById('ans-0').focus();
+        $('#ans-0').attr("checked", "checked");
     }
-    
 }
 
 function evaluateAnswer() {
@@ -144,49 +140,56 @@ function evaluateAnswer() {
         event.preventDefault();
         let correctIndex = randomArray.indexOf(correctAnswer);
         let radioValue = $("input[name='answer']:checked").val(); 
-        if (correctIndex == radioValue) {
+        if (radioValue === undefined) {
+            alert(`Do, or do not. There is no try. Please pick an option.`);
+            return;
+        } else if (correctIndex == radioValue) {
             score += 1;
             questionNumber += 1;
-            renderScoreAndProgress();
+            renderScore();
             renderPositiveFeedback();
             console.log(`correct answer selected!`);
         } else {
             questionNumber += 1;
-            renderScoreAndProgress();
+            renderScore();
             renderNegativeFeedback();
             console.log(`wrong answer selected!`)
         }
-        console.log(`evaluateAnswer ran!`);
     })
-    
+}
+
+function hideQuizAndDisplayFeedback() {
+    //this function hides the quiz form by adding a hidden class
+    //and displays the feedback section by removing the hidden class
+    $('.js-quiz').toggleClass('hidden');
+    $('.js-feedback').toggleClass('hidden');
+    $('#question-feedback').text(feedback);
 }
 
 function renderPositiveFeedback() {
     //this function renders the positive feedback to the user upon submitting an answer
-    $('.js-quiz').toggleClass('hidden');
-    $('.js-feedback').toggleClass('hidden');
-    $('.progress').toggleClass('hidden');
+    hideQuizAndDisplayFeedback();
     $('.feedback-text').text("You are both wise and strong with the force.");
-    $('#question-feedback').text(feedback);
-    console.log(`renderFeedback ran!`);
+    document.getElementById('next-question').focus();
 }
 
 function renderNegativeFeedback() {
     //this function renders the negative feedback to the user upon submitting an answer
-    $('.js-quiz').toggleClass('hidden');
-    $('.js-feedback').toggleClass('hidden');
-    $('.progress').toggleClass('hidden');
+    hideQuizAndDisplayFeedback();
     $('.feedback-text').text("Much to learn you still have.");
-    $('#question-feedback').text(feedback);
+    document.getElementById('next-question').focus();
     console.log(`renderFeedback ran!`);
 }
 
-function renderScoreAndProgress() {
-    //this function renders the user's current score and progress to the screen
-    //later I may break this into two functions
+function renderScore() {
+    //this function renders the user's current score to the screen
     $('.js-score-status').text(score);
+    console.log(`renderScore ran!`);
+}
+
+function renderProgress() {
+    //this function renders the user's progress to the screen
     $('.js-question-status').text(questionNumber + 1);
-    console.log(`renderScoreAndProgress ran!`);
 }
 
 function advanceQuestion() {
@@ -199,10 +202,10 @@ function advanceQuestion() {
 
 function handleQuizApp() {
     initiateQuiz();
-    renderCurrentQuestion();
+    //renderCurrentQuestion();
     evaluateAnswer();
-    renderScoreAndProgress();
-    advanceQuestion()
+    renderScore();
+    advanceQuestion();
 }
 
 $(handleQuizApp);
