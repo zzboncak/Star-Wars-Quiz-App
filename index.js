@@ -1,4 +1,4 @@
-//My questions and possible answers. The first entry into each answers array is the correct answer.
+//My questions and possible answers.
 const master = [
     {
         question: "How many Star Wars movies are there in the Skywalker Saga?",
