@@ -131,6 +131,9 @@ function initiateQuiz() {
         event.preventDefault();
         $('.js-start').toggleClass('hidden');
         renderCurrentQuestion();
+        //upon initiating the quiz, randomize the feedback quotes
+        positiveQuote.sort(() => Math.random() - 0.5);
+        negativeQuote.sort(() => Math.random() - 0.5);
     })
 }
 
@@ -212,17 +215,27 @@ function hideQuizAndDisplayFeedback() {
     $('#question-feedback').text(feedback);
 }
 
+function generatePositiveQuote() {
+    let quote = positiveQuote[Math.floor(Math.random()*(positiveQuote.length))];
+    return quote;
+}
+
 function renderPositiveFeedback() {
     //this function renders the positive feedback to the user upon submitting an answer
     hideQuizAndDisplayFeedback();
-    $('.feedback-text').text("You are both wise and strong with the force.");
+    $('.feedback-text').text(generatePositiveQuote());
     document.getElementById('next-question').focus();
+}
+
+function generateNegativeQuote() {
+    let quote = negativeQuote[Math.floor(Math.random()*(negativeQuote.length))];
+    return quote;
 }
 
 function renderNegativeFeedback() {
     //this function renders the negative feedback to the user upon submitting an answer
     hideQuizAndDisplayFeedback();
-    $('.feedback-text').text("Much to learn you still have.");
+    $('.feedback-text').text(generateNegativeQuote());
     document.getElementById('next-question').focus();
 }
 
