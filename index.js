@@ -137,7 +137,6 @@ function renderCurrentQuestion() {
     //these ensure the question form is displayed and the feedback portion is hidden
     $('.js-quiz').removeClass('hidden');
     $('.js-feedback').addClass('hidden');
-    //$('.progress').removeClass('hidden');
     renderProgress();
     if (questionNumber === master.length) {
         renderQuizEnd();
@@ -147,10 +146,7 @@ function renderCurrentQuestion() {
         feedback = currentQuestion.feedback;
         $('.question-text').text(currentQuestion.question);
         randomArray = currentQuestion.answers.slice();
-        console.log(randomArray);
         randomArray.sort(() => Math.random() - 0.5);
-        console.log(randomArray);
-        console.log(currentQuestion.answers);
         $('.answer-set').empty();
         let answerString = "";
         for (let i in randomArray) {
@@ -234,10 +230,7 @@ function restartQuiz() {
         score = 0;
         questionNumber = 0;
         randomArray = [];
-        //correctAnswer = undefined;
-        //feedback = undefined;
         renderScore();
-        //renderProgress();
         renderCurrentQuestion();
         $('.end-quiz').toggleClass('hidden');
         $('.progress').toggleClass('hidden');
