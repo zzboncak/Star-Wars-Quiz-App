@@ -215,27 +215,17 @@ function hideQuizAndDisplayFeedback() {
     $('#question-feedback').text(feedback);
 }
 
-function generatePositiveQuote() {
-    let quote = positiveQuote[Math.floor(Math.random()*(positiveQuote.length))];
-    return quote;
-}
-
 function renderPositiveFeedback() {
     //this function renders the positive feedback to the user upon submitting an answer
     hideQuizAndDisplayFeedback();
-    $('.feedback-text').text(generatePositiveQuote());
+    $('.feedback-text').text(positiveQuote[questionNumber]);
     document.getElementById('next-question').focus();
-}
-
-function generateNegativeQuote() {
-    let quote = negativeQuote[Math.floor(Math.random()*(negativeQuote.length))];
-    return quote;
 }
 
 function renderNegativeFeedback() {
     //this function renders the negative feedback to the user upon submitting an answer
     hideQuizAndDisplayFeedback();
-    $('.feedback-text').text(generateNegativeQuote());
+    $('.feedback-text').text(negativeQuote[questionNumber]);
     document.getElementById('next-question').focus();
 }
 
@@ -268,6 +258,8 @@ function restartQuiz() {
         renderCurrentQuestion();
         $('.end-quiz').toggleClass('hidden');
         $('.progress').toggleClass('hidden');
+        positiveQuote.sort(() => Math.random() - 0.5);
+        negativeQuote.sort(() => Math.random() - 0.5);
     })
 }
 
