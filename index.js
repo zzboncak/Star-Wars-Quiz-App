@@ -87,9 +87,34 @@ const wordsOfWisdom = [
 ]
 
 const positiveQuote = [
-    `"There’s always a bigger fish." – Qui-gon Jinn`,
-    `Train yourself to let go of everything you fear to lose." - Yoda`,
+    `"Train yourself to let go of everything you fear to lose." - Yoda`,
+    `"In my experience there is no such thing as luck." – Obi-Wan Kenobi`,
+    `"Great, kid. Don’t get cocky." – Han Solo`,
+    `"Mind tricks don’t work on me." – Watto`,
+    `"Stay on target." – Gold Five`,
+    `"I’m in charge! I’m in charge now!" – Finn`,
+    `"Pass on what you have learned." – Yoda`,
+    `"I have the high ground." - Obi-Wan Kenobi`,
+    `"This is where the fun begins." - Anakin Skywalker`,
+    `"Don’t everybody thank me at once." - Han Solo`,
+    `"You know, sometimes I amaze even myself." - Han Solo`,
+    `"Be careful not to choke on your aspirations" - Darth Vader`,
+    `"Power! Unlimited power!" - Darth Sidious`,
+    `"I’m one with the Force. The Force is with me." — Chirrut Îmwe`
+]
 
+const negativeQuote = [
+    `"There’s always a bigger fish." – Qui-gon Jinn`,
+    `"It’s not my fault." – Han Solo`,
+    `"I’ve got a bad feeling about this." – Everyone`,
+    `"So uncivilized." - Obi-Wan Kenobi`,
+    `"This deal is getting worse all the time." - Lando Calrisian`,
+    `"Let’s keep a little optimism here." - Han Solo`,
+    `"…I find your lack of faith disturbing." - Darth Vader`,
+    `"Asteroids do not concern me, Admiral." - Darth Vader`,
+    `"You have failed me for the last time." - Darth Vader`,
+    `"Help me, Obi-Wan Kenobi. You’re my only hope." — Leia Organa`,
+    `"The dark side of the Force is a pathway to many abilities some consider to be unnatural." — Chancellor Palpatine`
 ]
 
 //setting initial global variables of score and the current question the user is on as 0 as starting points.
