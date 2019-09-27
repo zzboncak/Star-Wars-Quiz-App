@@ -139,14 +139,18 @@ function renderCurrentQuestion() {
     $('.js-feedback').addClass('hidden');
     //$('.progress').removeClass('hidden');
     renderProgress();
-    if (questionNumber === 10) {
+    if (questionNumber === master.length) {
         renderQuizEnd();
     } else {
         let currentQuestion = master[questionNumber];
-        correctAnswer = currentQuestion.correct;
+        correctAnswer = currentQuestion.answers[0];
         feedback = currentQuestion.feedback;
         $('.question-text').text(currentQuestion.question);
-        randomArray = currentQuestion.answers.sort(() => Math.random() - 0.5);
+        randomArray = currentQuestion.answers.slice();
+        console.log(randomArray);
+        randomArray.sort(() => Math.random() - 0.5);
+        console.log(randomArray);
+        console.log(currentQuestion.answers);
         $('.answer-set').empty();
         let answerString = "";
         for (let i in randomArray) {
