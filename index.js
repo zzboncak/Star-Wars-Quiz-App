@@ -86,6 +86,12 @@ const wordsOfWisdom = [
     "“Impressive… Most, impressive” - Darth Vader"
 ]
 
+const positiveQuote = [
+    `"There’s always a bigger fish." – Qui-gon Jinn`,
+    `Train yourself to let go of everything you fear to lose." - Yoda`,
+
+]
+
 //setting initial global variables of score and the current question the user is on as 0 as starting points.
 //Then as the user progresses through the quiz, these variables will be updated.
 let score = 0;
