@@ -58,11 +58,6 @@ fieldset {
     background: rgba(0,0,0,0.75);
 }
 
-
-.question-text {
-    font-size: 15pt;
-}
-
 button {
     margin-top: 30px;
     float: right;
@@ -90,17 +85,34 @@ button {
     font-size: 20pt;
 }
 
-label, .question-feedback {
+label, .question-feedback, .question-text {
     font-size: 14pt;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 600px) {
     form {
         margin-top: 30px;
         margin-left: auto;
         margin-right: auto;
         width: 80%;
     }
+
+    .progress {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        color: white;
+        font-size: 0;
+        text-align: center;
+    }
+
+    .end-quiz {
+        margin-left: auto;
+        margin-right: auto;
+        width: 80%;
+        color: white;
+        text-align: center;
+    }    
 
     header {
         font-family: starWars;
@@ -110,6 +122,10 @@ label, .question-feedback {
         width: 100%;
         color: white;
         text-align: center;
-        font-size: 18pt;
+        font-size: 12pt;
     }    
+
+    label, .question-feedback, .question-text {
+        font-size: 12pt;
+    }
 }
