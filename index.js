@@ -87,10 +87,10 @@ const master = [
     },
     {
         question: "When Luke reconstructs his lightsaber in Episode VI, what color did it change from and to?",
-        answers: ["Blue to Green",
-        "Green to Blue",
-        "Blue to Purple",
-        "Green to Red"],
+        answers: ["From Blue to Green",
+        "From Green to Blue",
+        "From Blue to Purple",
+        "From Green to Red"],
         feedback: "After Luke loses his BLUE lightsaber from fighting Darth Vader in Episode V, he forges a new GREEN lightsaber in Episode VI."
     },
     {
@@ -111,17 +111,23 @@ const master = [
     },
     {
         question: "What type of starship is the Millenium Falcon?",
-        answers: ["YT-1300"]
+        answers: ["YT-1300 Corellian light freighter",
+        "Naboo N-1 Starfighter",
+        "ETA-2 Jedi Starfighter",
+        "GR-75 Medium Transport"],
+        feedback: "The Millenium Falcon is actually a modified YT-1300 Corellian light freighter."
     }
 ];
 
+//text to display at the end of the quiz, based on your score
 const wordsOfWisdom = [
-    "“Much to learn you still have” - Yoda",
-    "“Obi-Wan has taught you well” - Darth Vader",
-    "“I am a Jedi, like my father before me” - Luke Skywalker",
-    "“Impressive… Most, impressive” - Darth Vader"
+    `"Much to learn you still have." - Yoda`,
+    `"Obi-Wan has taught you well." - Darth Vader`,
+    `"I am a Jedi, like my father before me." - Luke Skywalker`,
+    `"Impressive… Most, impressive." - Darth Vader`
 ]
 
+//a positive quote to be rendered IF the user gets the question correct
 const positiveQuote = [
     `"Train yourself to let go of everything you fear to lose." - Yoda`,
     `"In my experience there is no such thing as luck." – Obi-Wan Kenobi`,
@@ -139,6 +145,7 @@ const positiveQuote = [
     `"I’m one with the Force. The Force is with me." — Chirrut Îmwe`
 ]
 
+//a negative quote to be rendered IF the user gets the question wrong
 const negativeQuote = [
     `"There’s always a bigger fish." – Qui-gon Jinn`,
     `"It’s not my fault." – Han Solo`,
@@ -167,6 +174,7 @@ function initiateQuiz() {
     $('.js-start').submit(event => {
         event.preventDefault();
         $('.js-start').toggleClass('hidden');
+        
         //upon initiating the quiz, randomize the feedback quotes
         positiveQuote.sort(() => Math.random() - 0.5);
         negativeQuote.sort(() => Math.random() - 0.5);
@@ -176,12 +184,12 @@ function initiateQuiz() {
         //then randomizing it
         randomQuestions = master.slice();
         randomQuestions.sort(() => Math.random() - 0.5);
-        console.log(randomQuestions);
         renderCurrentQuestion();
     })
 }
 
 function renderQuizEnd() {
+    //this function is responsible for rendering the end of the quiz to the page
     $('.js-quiz').addClass('hidden');
     $('.js-feedback').addClass('hidden');
     $('.progress').addClass('hidden');
@@ -207,7 +215,7 @@ function renderCurrentQuestion() {
     $('.js-feedback').addClass('hidden');
     renderProgress();
 
-    //while there are 14 questions written, they are randomized and only go through 10, so the user may get different questions each time
+    //while there are 15 questions written, they are randomized and only go through 10, so the user may get different questions each time
     if (questionNumber === 10) {
         renderQuizEnd();
     } else {
