@@ -212,20 +212,21 @@ function hideQuizAndDisplayFeedback() {
     //and displays the feedback section by removing the hidden class
     $('.js-quiz').toggleClass('hidden');
     $('.js-feedback').toggleClass('hidden');
-    $('#question-feedback').text(feedback);
 }
 
 function renderPositiveFeedback() {
     //this function renders the positive feedback to the user upon submitting an answer
     hideQuizAndDisplayFeedback();
-    $('.feedback-text').text(positiveQuote[questionNumber]);
+    $('#question-feedback').html(`Correct!<br><br>${feedback}`);
+    $('.feedback-text').html(`${positiveQuote[questionNumber]}`);
     document.getElementById('next-question').focus();
 }
 
 function renderNegativeFeedback() {
     //this function renders the negative feedback to the user upon submitting an answer
     hideQuizAndDisplayFeedback();
-    $('.feedback-text').text(negativeQuote[questionNumber]);
+    $('#question-feedback').html(`Incorrect!<br><br>${feedback}`);
+    $('.feedback-text').html(`${negativeQuote[questionNumber]}`);
     document.getElementById('next-question').focus();
 }
 

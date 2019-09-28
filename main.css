@@ -85,8 +85,16 @@ button {
     font-size: 20pt;
 }
 
-label, .question-feedback, .question-text {
-    font-size: 14pt;
+label, .question-feedback, .question-text, .feedback-text {
+    font-size: 13pt;
+    color: white;
+}
+
+.feedback-text {
+    width: 600px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 @media screen and (max-width: 600px) {
@@ -118,14 +126,21 @@ label, .question-feedback, .question-text {
         font-family: starWars;
         margin-left: auto;
         margin-right: auto;
-        padding-top: 100px;
+        padding-top: 50px;
         width: 100%;
         color: white;
         text-align: center;
         font-size: 12pt;
     }    
 
-    label, .question-feedback, .question-text {
+    label, .question-feedback, .question-text, .feedback-text {
         font-size: 12pt;
+    }
+
+    .feedback-text {
+        width: 80%;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
     }
 }
