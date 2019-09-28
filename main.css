@@ -26,7 +26,7 @@ header {
     font-size: 20pt;
 }
 
-form, .end-quiz {
+form, .end-quiz, .progress {
     font-family: 'Chivo', sans-serif;
 }
 
@@ -133,7 +133,7 @@ label, .question-feedback, .question-text, .feedback-text {
         font-size: 12pt;
     }    
 
-    label, .question-feedback, .question-text, .feedback-text {
+    label, .question-feedback, .question-text, .feedback-text, .top {
         font-size: 12pt;
     }
 

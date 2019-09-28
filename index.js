@@ -43,7 +43,7 @@ const master = [
         "Mandalorian",
         "Wookie",
         "Geonosian"],
-        feedback: "Jar Jar, a gungan, is arguably the Star Wars fandom's least favorite character.",
+        feedback: "Jar Jar, a Gungan, is arguably the Star Wars fandom's least favorite character.",
     },
     {
         question: "What is Finn’s original storm trooper call number?",
