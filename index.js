@@ -30,12 +30,12 @@ const master = [
         feedback: "Okay, this one was mean. It's 136 minutes long.",
     },
     {
-        question: "What is unique about Count Duku’s lightsaber?",
+        question: "What is unique about Count Dooku’s lightsaber?",
         answers: ["It is bent at the hilt",
         "It has two blades",
         "It's Purple",
         "It used to be Dath Plageus the Wise's"],
-        feedback: "Count Duku's lightsaber is bent at the hilt.",
+        feedback: "Count Dooku's lightsaber is bent at the hilt.",
     },
     {
         question: "What species is Jar Jar Binks?",
@@ -110,12 +110,12 @@ const master = [
         feedback: "Episode VII takes place about 30 years after the events of Episode VI."
     },
     {
-        question: "What type of starship is the Millenium Falcon?",
+        question: "What type of starship is the Millennium Falcon?",
         answers: ["YT-1300 Corellian light freighter",
         "Naboo N-1 Starfighter",
         "ETA-2 Jedi Starfighter",
         "GR-75 Medium Transport"],
-        feedback: "The Millenium Falcon is actually a modified YT-1300 Corellian light freighter."
+        feedback: "The Millennium Falcon is actually a modified YT-1300 Corellian light freighter."
     }
 ];
 
@@ -140,7 +140,7 @@ const positiveQuote = [
     `"This is where the fun begins." - Anakin Skywalker`,
     `"Don’t everybody thank me at once." - Han Solo`,
     `"You know, sometimes I amaze even myself." - Han Solo`,
-    `"Be careful not to choke on your aspirations" - Darth Vader`,
+    `"Be careful not to choke on your aspirations." - Darth Vader`,
     `"Power! Unlimited power!" - Darth Sidious`,
     `"I’m one with the Force. The Force is with me." — Chirrut Îmwe`
 ]
