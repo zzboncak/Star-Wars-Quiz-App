@@ -121,7 +121,8 @@ const negativeQuote = [
 //Then as the user progresses through the quiz, these variables will be updated.
 let score = 0;
 let questionNumber = 0;
-let randomArray = [];
+let randomAnswers = [];
+let randomQuestions = [];
 let correctAnswer;
 let feedback;
 
@@ -130,10 +131,17 @@ function initiateQuiz() {
     $('.js-start').submit(event => {
         event.preventDefault();
         $('.js-start').toggleClass('hidden');
-        renderCurrentQuestion();
         //upon initiating the quiz, randomize the feedback quotes
         positiveQuote.sort(() => Math.random() - 0.5);
         negativeQuote.sort(() => Math.random() - 0.5);
+        
+        //these two commands randomize the questions of the quiz upon initiation
+        //first by making a copy so as to not mutate the master
+        //then randomizing it
+        randomQuestions = master.slice();
+        randomQuestions.sort(() => Math.random() - 0.5);
+        console.log(randomQuestions);
+        renderCurrentQuestion();
     })
 }
 
@@ -165,16 +173,16 @@ function renderCurrentQuestion() {
     if (questionNumber === master.length) {
         renderQuizEnd();
     } else {
-        let currentQuestion = master[questionNumber];
+        let currentQuestion = randomQuestions[questionNumber];
         correctAnswer = currentQuestion.answers[0];
         feedback = currentQuestion.feedback;
         $('.question-text').text(currentQuestion.question);
-        randomArray = currentQuestion.answers.slice();
-        randomArray.sort(() => Math.random() - 0.5);
+        randomAnswers = currentQuestion.answers.slice();
+        randomAnswers.sort(() => Math.random() - 0.5);
         $('.answer-set').empty();
         let answerString = "";
-        for (let i in randomArray) {
-            let answer = randomArray[i];
+        for (let i in randomAnswers) {
+            let answer = randomAnswers[i];
             answerString += `<input type="radio" name="answer" id="ans-${i}" value="${i}">
             <label for="ans-${i}">${answer}</label>
             <br>`
@@ -189,7 +197,7 @@ function evaluateAnswer() {
     //this function evaluates if the user's answer is the correct answer
     $('.js-quiz').submit(event => {
         event.preventDefault();
-        let correctIndex = randomArray.indexOf(correctAnswer);
+        let correctIndex = randomAnswers.indexOf(correctAnswer);
         let radioValue = $("input[name='answer']:checked").val(); 
         if (radioValue === undefined) {
             alert(`Do, or do not. There is no try. Please pick an option.`);
@@ -254,13 +262,14 @@ function restartQuiz() {
         //reset globals
         score = 0;
         questionNumber = 0;
-        randomArray = [];
+        randomAnswers = [];
+        randomQuestions.sort(() => Math.random() - 0.5);
         renderScore();
-        renderCurrentQuestion();
         $('.end-quiz').toggleClass('hidden');
         $('.progress').toggleClass('hidden');
         positiveQuote.sort(() => Math.random() - 0.5);
         negativeQuote.sort(() => Math.random() - 0.5);
+        renderCurrentQuestion();
     })
 }
 
