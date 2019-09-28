@@ -1,4 +1,4 @@
-//My questions and possible answers.
+//My questions and possible answers. The first entry in answers is the correct answer.
 const master = [
     {
         question: "How many Star Wars movies are there in the Skywalker Saga?",
@@ -76,6 +76,42 @@ const master = [
         "$987 Million",
         "$405 Million"],
         feedback: "$4.05 billion is a lot of money...",
+    },
+    {
+        question: "What is the title of Episode II?",
+        answers: ["Attack of the Clones",
+        "The Clone Wars",
+        "The Phantom Menace",
+        "The Empire Strikes Back"],
+        feedback: "Episode II: Attack of the Clones came out in 2002",
+    },
+    {
+        question: "When Luke reconstructs his lightsaber in Episode VI, what color did it change from and to?",
+        answers: ["Blue to Green",
+        "Green to Blue",
+        "Blue to Purple",
+        "Green to Red"],
+        feedback: "After Luke loses his BLUE lightsaber from fighting Darth Vader in Episode V, he forges a new GREEN lightsaber in Episode VI."
+    },
+    {
+        question: "What is Kylo Ren's relation to Darth Vader?",
+        answers: ["Darth Vader is Kylo Ren's gandfather",
+        "Darth Vader is Kylo Ren's father",
+        "There is no relation, he's just obsessed",
+        "Darth Vader is Kylo Ren's former master"],
+        feedback: "Grandfather. Kylo Ren is the son of Leia Organa, who is the daughter of Anakin Skywalker (A.K.A. Darth Vader)."
+    },
+    {
+        question: "How many years elapse between episodes VI and VII?",
+        answers: ["About 30",
+        "About 5",
+        "About 15",
+        "About 20"],
+        feedback: "Episode VII takes place about 30 years after the events of Episode VI."
+    },
+    {
+        question: "What type of starship is the Millenium Falcon?",
+        answers: ["YT-1300"]
     }
 ];
 
@@ -170,7 +206,9 @@ function renderCurrentQuestion() {
     $('.js-quiz').removeClass('hidden');
     $('.js-feedback').addClass('hidden');
     renderProgress();
-    if (questionNumber === master.length) {
+
+    //while there are 14 questions written, they are randomized and only go through 10, so the user may get different questions each time
+    if (questionNumber === 10) {
         renderQuizEnd();
     } else {
         let currentQuestion = randomQuestions[questionNumber];
@@ -276,7 +314,6 @@ function restartQuiz() {
 function handleQuizApp() {
     initiateQuiz();
     evaluateAnswer();
-    renderScore();
     advanceQuestion();
     restartQuiz();
 }
