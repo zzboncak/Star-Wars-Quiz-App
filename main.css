@@ -63,6 +63,7 @@ button {
     float: right;
     height: 35px;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 #ans-1, #ans-2, #ans-3, #ans-4 {
@@ -88,6 +89,10 @@ button {
 label, .question-feedback, .question-text, .feedback-text {
     font-size: 13pt;
     color: white;
+}
+
+label {
+    display: block;
 }
 
 .feedback-text {

@@ -229,9 +229,11 @@ function renderCurrentQuestion() {
         let answerString = "";
         for (let i in randomAnswers) {
             let answer = randomAnswers[i];
-            answerString += `<input type="radio" name="answer" id="ans-${i}" value="${i}">
-            <label for="ans-${i}">${answer}</label>
-            <br>`
+            answerString += `
+                <label for="ans-${i}">
+                    <input type="radio" name="answer" id="ans-${i}" value="${i}">
+                    ${answer}
+                </label>`
         }
         $('.answer-set').html(answerString);
         document.getElementById('ans-0').focus();
